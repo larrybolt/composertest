@@ -1,16 +1,14 @@
 <?php
 require('./vendor/autoload.php');
 
-$app = new \Slim\App;
+$app = new \Slim\Slim();
 
-// Define app routes
-$app->get('/hello/{name}', function ($request, $response, $args) {
-    return $response->write("Hello " . $args['name']);
+$app->get('/hello/:name', function ($name) {
+    echo "Hello, $name";
 });
-$app->get('/', function ($request, $response, $args) {
-    return $response->write("HI");
+$app->get('/', function () {
+    echo "HI";
 });
 
-// Run app
 $app->run();
 
